@@ -14,7 +14,8 @@ class window.AppView extends Backbone.View
         # else
           # players turn again
 
-    'click .stand-button': -> @model.get('playerHand').stand()
+    'click .stand-button': -> @model.get('playerHand').stand() #stop this hand from moving
+                              #dealer.startHitting();
     # Now it's the dealer's turn
       # flip covered card
       # if score <17
@@ -26,7 +27,9 @@ class window.AppView extends Backbone.View
           # higher score wins
 
   initialize: ->
+    @model.get('playerHand').on 'bust', => alert 'You Lose, sucka'
     @render()
+
 
   render: ->
     @$el.children().detach()
