@@ -28,11 +28,16 @@ class window.App extends Backbone.Model
           # draw
           alert('Tie, you fuckin kidding me!?')
 
-      @reset()
+      # @reset()
+      @trigger 'gameOver'
+      # @set 'gameOver', true
 
     @get('playerHand').on 'bust', =>
       alert('busted, son!')
-      @reset()
+      @trigger 'gameOver'
+
+      # @set 'gameOver', true
+      # @reset()
       #dealer wins
       #reset game
 
@@ -42,6 +47,5 @@ class window.App extends Backbone.Model
     @set 'playerHand', @get('deck').dealPlayer()
     @set 'dealerHand', @get('deck').dealDealer()
     @addListeners()
-    @trigger 'reset'
 
 
