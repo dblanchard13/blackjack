@@ -13,7 +13,7 @@ class window.Hand extends Backbone.Collection
     @.at(0).flip()
     while @scores() < 17
       @hit()
-    return undefined
+    return
 
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
