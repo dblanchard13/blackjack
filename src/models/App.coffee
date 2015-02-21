@@ -7,8 +7,8 @@ class window.App extends Backbone.Model
     # @set 'dealerHand', deck.dealDealer()
     @set 'game', new Game()
 
-    #TODO: change everywhere else that called this to ie App.Game.playHand 
-    
+    #TODO: change everywhere else that called this to ie App.Game.playHand
+
     #function()
     #while dealer hand < 17
       # hit

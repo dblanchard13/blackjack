@@ -27,7 +27,7 @@ class window.AppView extends Backbone.View
           # higher score wins
 
   initialize: ->
-    @model.get('playerHand').on 'bust', => alert 'You Lose, sucka'
+    # @model.get('playerHand').on 'bust', => alert 'You Lose, sucka'
     @render()
 
 

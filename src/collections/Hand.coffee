@@ -7,9 +7,14 @@ class window.Hand extends Backbone.Collection
     @add(@deck.pop())
 
   stand: ->
-    # @.at(0).flip()
-    
-  
+    @trigger 'stand'
+
+  dealerPlay: ->
+    @.at(0).flip()
+    while @scores() < 17
+      @hit()
+    return undefined
+
   hasAce: -> @reduce (memo, card) ->
     memo or card.get('value') is 1
   , 0
