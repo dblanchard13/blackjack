@@ -37,6 +37,8 @@ class window.App extends Backbone.Model
       #reset game
 
   reset: ->
+    if @get('deck').length < 10
+      @set 'deck', new Deck()
     @set 'playerHand', @get('deck').dealPlayer()
     @set 'dealerHand', @get('deck').dealDealer()
     @addListeners()
