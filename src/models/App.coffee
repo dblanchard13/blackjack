@@ -5,7 +5,7 @@ class window.App extends Backbone.Model
     # @set 'deck', deck = new Deck()
     # @set 'playerHand', deck.dealPlayer()
     # @set 'dealerHand', deck.dealDealer()
-    # @set 'game'
+    @set 'game', game = new Game()
     #TODO: change everywhere else that called this to ie App.Game.playHand
 
     #function()

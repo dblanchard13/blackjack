@@ -8,25 +8,25 @@ class window.AppView extends Backbone.View
   events:
     'click .hit-button': ->
       if !@gameOver
-        @model.get('playerHand').hit()
+        @model.get('game').get('playerHand').hit()
 
     'click .stand-button': ->
       if !@gameOver
-        @model.get('playerHand').stand() #stop this hand from moving
+        @model.get('game').get('playerHand').stand() #stop this hand from moving
     'click .reset-button': ->
-      @model.reset()
+      @model.get('game').reset()
       @render()
       @gameOver = false
 
   initialize: ->
     @render()
-    @model.on 'gameOver', => @gameOver = true
+    @model.get('game').on 'gameOver', => @gameOver = true
     @gameOver = false
 
 
   render: ->
     @$el.children().detach()
     @$el.html @template()
-    @$('.player-hand-container').html new HandView(collection: @model.get 'playerHand').el
-    @$('.dealer-hand-container').html new HandView(collection: @model.get 'dealerHand').el
+    @$('.player-hand-container').html new HandView(collection: @model.get('game').get('playerHand')).el
+    @$('.dealer-hand-container').html new HandView(collection: @model.get('game').get('dealerHand')).el
 
