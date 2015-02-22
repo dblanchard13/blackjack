@@ -15,31 +15,38 @@ class window.Game extends Backbone.Model
       #dealer bust
       if @get('dealerHand').scores() > 21
         #you win
-        alert('You Win, Balla!')
+        setTimeout(@displayResults.bind(this, 'win'), 500)
       else
         score = @get('playerHand').scores() - @get('dealerHand').scores()
         if score > 0
-          alert('You Win, Balla!')
+          setTimeout(@displayResults.bind(this, 'win'), 500)
           # you win
         if score < 0
-          alert('You Lose, Foo!')
+          setTimeout(@displayResults.bind(this, 'lose'), 500)
           # you lose
         if score == 0
           # draw
-          alert('Tie, you fuckin kidding me!?')
+          setTimeout(@displayResults.bind(this, 'draw'), 500)
 
       # @reset()
       @trigger 'gameOver'
       # @set 'gameOver', true
 
     @get('playerHand').on 'bust', =>
-      alert('busted, son!')
+      setTimeout(@displayResults.bind(this, 'bust'), 500)
       @trigger 'gameOver'
 
       # @set 'gameOver', true
       # @reset()
       #dealer wins
       #reset game
+
+  displayResults: (event) ->
+    switch event
+      when 'win' then alert('You Win, Balla!')
+      when 'lose' then alert('You Lose, Foo!')
+      when 'draw' then alert('Tie, you fuckin kidding me!?')
+      when 'bust' then alert('Busted, son!')
 
   reset: ->
     if @get('deck').length < 10
